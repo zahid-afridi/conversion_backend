@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import authrouter from './src/Routes/authRoutes.js'
+// import authrouter from './Routes/authRoutes.js'
 dotenv.config()
 const port=process.env.PORT
 const app=express()
