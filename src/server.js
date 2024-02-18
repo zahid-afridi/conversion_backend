@@ -5,7 +5,7 @@ dotenv.config()
 const port=process.env.PORT
 const app=express()
 app.use(express.json())
-dbcon()
+// dbcon()
 app.use('/api/auth',authrouter)
 import dbcon from './db/db.js'
 
