@@ -1,29 +1,25 @@
-import User from '../Models/authModels.js'
+import User from '../Models/authModels.js';
 
-
-const Register=async(req,res)=>{
+const Register = async (req, res) => {
   try {
-    const {username,password}=req.body
+    const { username, password } = req.body;
 
-    const exitingUser= await User.findOne({username})
-    if (exitingUser) {
-    return res.status(404).json({success:false,message:"User already exitie"})
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(409).json({ success: false, message: "Username already exists" });
     }
-    const newUser= new User({username,password})
-    await newUser.save()
-    res.status(200).json({success:true,message:"user register succefful"})
+
+    const newUser = new User({ username, password });
+    await newUser.save();
+    res.status(201).json({ success: true, message: "User registered successfully" });
   } catch (error) {
-    console.log(error)
-    res.status(500).json({success:false,message:"internal server eror"})
-
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
-}
+};
 
+const login = async (req, res) => {
+  // Implement login logic here
+};
 
-
-
-const login=async(req,res)=>{
- res.send('hello from server')
-}
-
-export {login,Register}
+export { login, Register };
