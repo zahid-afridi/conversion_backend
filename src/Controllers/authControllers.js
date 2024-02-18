@@ -19,7 +19,7 @@ const Register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  // Implement login logic here
+res.send('hello form server')
 };
 
 export { login, Register };
