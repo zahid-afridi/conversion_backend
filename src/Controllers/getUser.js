@@ -12,6 +12,8 @@ const GetUser=async(req,res)=>{
   }
   const SingleUser = async (req, res) => {
     try {
+
+      // singleuser id
       const userId = req.params.id;
       const existingUser = await User.findById(userId);
       if (!existingUser) {
