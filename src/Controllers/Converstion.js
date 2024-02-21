@@ -18,7 +18,7 @@ try {
     const converstion=await Converstion.find({
         memmbers:{$in:[userId]}
     })
-    res.status(200).json(converstion)
+    res.status(200).json({success:200,converstion})
 } catch (error) {
     res.status(500).json(error,message="internal serve error")
     

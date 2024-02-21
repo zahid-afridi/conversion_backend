@@ -1,17 +1,20 @@
 import mongoose from "mongoose";
 
-const MessageSchema=new mongoose.Schema({
-    conversationId:{
-        type:String
+const MessageSchema = new mongoose.Schema({
+    conversationId: {
+        type: String
     },
-    sender:{
-        type:String,
+    sender: {
+        type: String,
     },
-    text:{
-        type:String,
+    text: {
+        type: String,
     }
-},{
-    timestamps:true
-})
+}, {
+    timestamps: true
+});
 
-export default mongoose.model ('Message',MessageSchema)
+// Create TTL index on createdAt field
+MessageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 15 });
+
+export default mongoose.model('Message', MessageSchema);
