@@ -6,7 +6,7 @@ const Register = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ username:username });
     if (existingUser) {
       return res.status(409).json({ success: false, message: "Username already exists" });
     }
