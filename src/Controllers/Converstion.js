@@ -6,7 +6,7 @@ const newConverstion = new Converstion({
 })
 try {
     const savedConverstion= await newConverstion.save()
-    res.status(200).json(savedConverstion)
+    res.status(200).json({success:true,savedConverstion})
 } catch (error) {
     res.status(500).json({message:"internal server error",error})
     console.log(error)
