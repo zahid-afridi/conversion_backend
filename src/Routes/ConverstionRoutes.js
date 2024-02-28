@@ -1,10 +1,11 @@
 import express from 'express'
-import { AddConverstino,getconversion } from '../Controllers/Converstion.js'
+import { AddConverstino,getConversationBetweenUsers,getconversion } from '../Controllers/Converstion.js'
 
 
 const converstinRoutes=express.Router()
 converstinRoutes.post('/addconversino',AddConverstino)
 converstinRoutes.get('/getconversion/:userId',getconversion)
+converstinRoutes.get('/getconversion/:userId1/:userId2', getConversationBetweenUsers);
 
 
 

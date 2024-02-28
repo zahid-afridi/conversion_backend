@@ -24,5 +24,33 @@ try {
     
 }
 }
+const getConversationBetweenUsers = async (req, res) => {
+    try {
+        const userId1 = req.params.userId1;
+        const userId2 = req.params.userId2;
 
-export {AddConverstino,getconversion}
+        console.log("User IDs:", userId1, userId2);
+
+        const conversation = await Converstion.findOne({
+            $and: [
+                { memmbers: userId1 },
+                { memmbers: userId2 }
+            ]
+        });
+
+        console.log("Conversation:", conversation);
+
+        if (conversation) {
+            res.status(200).json({ success: true, conversation });
+        } else {
+            res.status(404).json({ success: false, message: "Conversation not found." });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+};
+
+
+
+export {AddConverstino,getconversion,getConversationBetweenUsers}
