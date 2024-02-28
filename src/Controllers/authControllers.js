@@ -80,8 +80,8 @@ const login = async (req, res) => {
       return res.status(404).json({ success: false, message: "Authentication failed. User not found." });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
+
+    if (user.password !== password) {
       return res.status(401).json({ success: false, message: "Authentication failed. Invalid password." });
     }
 
