@@ -15,6 +15,6 @@ const MessageSchema = new mongoose.Schema({
 });
 
 // Create TTL index on createdAt field
-// MessageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 15 });
+MessageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 1800 }); // Expires after 30 minutes (1800 seconds)
 
 export default mongoose.model('Message', MessageSchema);
